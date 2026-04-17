@@ -1,0 +1,200 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "analyze": {
+      "temperature": 0.1
+    },
+    "build": {
+      "temperature": 0.3
+    },
+    "brainstorm": {
+      "temperature": 0.7
+    }
+  },
+
+
+    "mcp": {
+
+    "onio-rag-langchain": {
+      "type": "remote",
+      "url": "http://10.1.1.78:8080/mcp",
+      "enabled": true
+    }, 
+
+        
+    "onio-ic-sim-launcher": {
+      "type": "local",
+      "command": [
+        "python",
+        "-m",
+        "onio_mcp_makefile",
+        "--makefile",
+        "./sim/Makefile.ai.mk"
+      ],
+      "enabled": false,  
+      "environment": {}
+    },
+    "jtag-explorer-mcp": {
+      "type": "local",
+      "command": [
+        "./support/local/flash_prog/flash_prog.py",
+        "--auto",
+        "mcp"
+      ],
+      "enabled": false,  
+      "environment": {}
+    },
+    "onio-rtt": {
+      "type": "local",
+      "command": [
+        "python",
+        "./support/local/flash_prog/onio_rtt_server.py",
+        "--auto",
+        "--stopcpu-mode",
+        "sync",
+        "--mcp",
+        "--mcp-stdio"
+      ],
+      "environment": {}
+    },
+
+    "relay-board": {
+      "type": "local",
+      "command": [
+        "python",
+        "-m",
+        "onio_mcp_makefile",
+        "--makefile",
+        "./support/local/relay_board/Makefile.ai.mk"
+      ],
+      "enabled": false,  
+      "environment": {}
+    },
+    "serial-mcp-server": {
+      "type": "local",
+      "command": [
+        "serial-mcp-server"        
+      ],
+      "enabled": false,  
+      "environment": {}
+    },
+    "stlink-v3pwr": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8088/sse",
+      "enabled": false
+    },
+    "eyevolt": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8089/sse",
+      "enabled": false
+    },
+    "code-index-mcp-ic-test": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+http://gitlabtrd.onio.com/mirrors/code-index-mcp-onio-version@add-include-exclude",
+        "code-index-mcp",
+        "--project-path",
+        ".",
+        "--profile",
+        "ic-test",
+        "--filter-config",
+        ".code-index-mcp.ic-test.json"
+      ],
+      "environment": {}
+    },  
+    "code-index-mcp-sdk": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+http://gitlabtrd.onio.com/mirrors/code-index-mcp-onio-version@add-include-exclude",
+        "code-index-mcp",
+        "--project-path",
+        ".",
+        "--profile",
+        "sdk",
+        "--filter-config",
+        ".code-index-mcp.sdk.json"
+      ],
+      "environment": {}
+    }  
+  },
+  "provider": {
+
+
+    "llama.cpp": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "llama-local",
+      "options": {
+        "baseURL": "http://10.10.0.3:8080/v1"
+      },
+      "models": {
+        "qwen3-coder:a3b": {
+          "name": "Devstral-Small-2-24B-Instruct-2512-GGUF:Q3_K_XL",
+          "limit": {
+            "context": 393216,
+            "output": 65536
+          }
+        },
+        "GLM-4.7-Flash": {
+          "name": "GLM-4.7-Flash@llama-local",
+            "tools": true,
+          "limit": {
+            "context": 90000,
+            "output": 65536
+          }  
+        },
+        "gpt-oss-20b": {
+          "name": "gpt-oss-20b@llama-local",
+          "tools": true
+        }      ,
+        "gemma-4-26B-A4B": {
+          "name": "gemma-4-26B-A4B@llama-local",
+          "tools": true
+        }      
+          
+          
+      }
+    },
+
+      
+    "vllm-lan": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "vLLM (ONiO AI Server #1)",
+      "options": {
+        "baseURL": "http://aiserver01.onio.com:8000/v1"
+      },
+      "models": {
+        "Qwen3 Coder Next (vLLM)": {
+            "name": "My vLLM model",
+            "id": "qwen3-coder-next",
+            "limit": {
+                "context": 170000,
+                "output": 65536
+            }
+        },
+        "google/gemma-4-26B-A4B-it": {
+            "name": "google/gemma-4-26B-A4B-it",
+            "id": "google/gemma-4-26B-A4B-it",
+            "limit": {
+                "context": 200000,
+                "output": 65536
+            }
+        },  
+        "google/gemma-4-31B-it": {
+            "name": "google/gemma-4-31B-it",
+            "id": "google/gemma-4-31B-it",
+            "limit": {
+                "context": 65536,
+                "output": 65536
+            }
+        }  
+          
+          
+      }
+    }  
+      
+  }   
+}

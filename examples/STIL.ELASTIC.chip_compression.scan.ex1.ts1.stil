@@ -1,0 +1,1830 @@
+STIL 1.0; 
+
+//***************************************************************************//
+//                             STIL VECTOR FILE                              //
+//Cadence(R) Modus(TM) DFT Software Solution, Version 25.11-s001_1, built Jul//
+//***************************************************************************//
+//                                                                           //
+//  FILE CREATED..............November 21, 2025 at 03:39:27                  //
+//                                                                           //
+//  PROJECT NAME..............from_genus_1d-comp-sdf                         //
+//                                                                           //
+//  TESTMODE..................ELASTIC                                        //
+//                                                                           //
+//  INEXPERIMENT..............chip_compression                               //
+//                                                                           //
+//  TDR.......................dummy.tdr                                      //
+//                                                                           //
+//  TEST PERIOD...............80.000   TEST TIME UNITS...........ns          //
+//  TEST PULSE WIDTH..........25.000                                         //
+//  TEST STROBE OFFSET........55.000   TEST STROBE TYPE..........edge        //
+//  TEST BIDI OFFSET..........0.000                                          //
+//  TEST PI OFFSET............0.000    X VALUE...................Z           //
+//                                                                           //
+//                                     SCAN OVERLAP..............yes         //
+//  SCAN PERIOD...............80.000   SCAN TIME UNITS...........ns          //
+//  SCAN PULSE WIDTH..........20.000                                         //
+//  SCAN STROBE OFFSET........25.000   SCAN STROBE TYPE..........edge        //
+//  SCAN BIDI OFFSET..........0.000                                          //
+//  SCAN PI OFFSET............0.000    X VALUE...................Z           //
+//                                                                           //
+//                                                                           //
+//   Individually set PIs                                                    //
+//  "P10" (PI # 12)                                                          //
+//  TEST OFFSET...............25.000   PULSE WIDTH...............25.000      //
+//  SCAN OFFSET...............45.000   PULSE WIDTH...............20.000      //
+//                                                                           //
+//  "P5" (PI # 37)                                                           //
+//  TEST OFFSET...............25.000                                         //
+//  SCAN OFFSET...............45.000   PULSE WIDTH...............20.000      //
+//                                                                           //
+//  "P6" (PI # 38)                                                           //
+//  TEST OFFSET...............0.000                                          //
+//  SCAN OFFSET...............45.000   PULSE WIDTH...............20.000      //
+//                                                                           //
+//  Active TESTMODEs TM = 2 ..ELASTIC                                        //
+//                                                                           //
+//  EXPERIMENT................1  Name = chip_compression                     //
+//  DATA FORMAT...............binary                                         //
+//                                                                           //
+//  TEST SECTION..............1        TEST SECTION TYPE.........scan        //
+//                                                                           //
+//  The range of Tests in this Test Section......................1:8         //
+//                                                                           //
+//  TESTER TERMINATION........none     TERMINATION DOMINATION....tester      //
+//                                                                           //
+//***************************************************************************//
+
+// Command Line: write_vectors -WORKDIR /home/roba/work/gitlab/icdesign/chips/polaris-lpc/atpg/from_genus_1d-comp-sdf -TESTMODE ELASTIC -INEXPERIMENT chip_compression -language stil -scanperiod 80 -scanpioffset 0 -scanpulsewidth 20 -scanstrobeoffset 25 -testperiod 80 -testpioffset 0 -testpulsewidth 25 -teststrobeoffset 55
+
+  Include "STIL.ELASTIC.chip_compression.signals.stil"; 
+
+//***************************************************************************//
+//                            TIMING DEFINITIONS                             //
+//***************************************************************************//
+
+  Timing { 
+
+    WaveformTable "test_cycle" { Period '80.000000ns' ; 
+      Waveforms { 
+        "ADCIN0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ADCIN1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ADCIN2" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ADCIN3" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ADCIN4" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "AI11RFN" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "AI11RFP" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ANATEST0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ANATEST1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P10" { 01ZP { '0ns' P/P/P/P;  '25.000000ns' D/U/Z/U; '50.000000ns' D/U/Z/D; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P11" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P12" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P13" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P14" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P15" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P16" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P17" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P18" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P19" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P2" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P20" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P21" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P22" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P23" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P24" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P25" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P26" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P27" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P28" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P29" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P3" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P30" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P31" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P4" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P5" { 01ZP { '0ns' P/P/P/P;  '25.000000ns' D/U/Z/P; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P6" { 01ZP { '0.000000ns' D/U/Z/P; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P7" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P8" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "P9" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "POTCE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "POTRE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "POTWE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "RFTEST0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "RFTEST1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "RSTNVULP" { 01Z  { '0.000000ns' D/U/Z; } } 
+        "SELECT_4_PIN" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "STPCFG0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "STPCFG1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TCKC" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TCKC_SENSE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TDI" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TDO" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TM0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TM1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TM2" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TM3" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TMSC" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "TRSTN" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "VPP" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "WAKEN" { 01Z  { '0.000000ns' D/U/Z; } } 
+        "XIN32M" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "XOUT32M" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "ANT" { LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "UWBN" { LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+        "UWBP" { LHTX { '0ns' X/X/X/X; '55.000000ns' L/H/T/X; } } 
+    } } 
+
+    WaveformTable "scan_cycle_TM_2" { Period '80.000000ns' ; 
+      Waveforms { 
+        "ADCIN0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ADCIN1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ADCIN2" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ADCIN3" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ADCIN4" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "AI11RFN" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "AI11RFP" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ANATEST0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ANATEST1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P10" { 01ZP { '0ns' P/P/P/P;  '45.000000ns' D/U/Z/U; '65.000000ns' D/U/Z/D; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P11" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P12" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P13" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P14" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P15" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P16" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P17" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P18" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P19" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P2" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P20" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P21" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P22" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P23" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P24" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P25" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P26" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P27" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P28" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P29" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P3" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P30" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P31" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P4" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P5" { 01ZP { '0ns' P/P/P/P;  '45.000000ns' D/U/Z/U; '65.000000ns' D/U/Z/D; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P6" { 01ZP { '0ns' P/P/P/P;  '45.000000ns' D/U/Z/U; '65.000000ns' D/U/Z/D; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P7" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P8" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "P9" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "POTCE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "POTRE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "POTWE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "RFTEST0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "RFTEST1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "RSTNVULP" { 01Z  { '0.000000ns' D/U/Z; } } 
+        "SELECT_4_PIN" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "STPCFG0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "STPCFG1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TCKC" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TCKC_SENSE" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TDI" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TDO" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TM0" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TM1" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TM2" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TM3" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TMSC" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "TRSTN" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "VPP" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "WAKEN" { 01Z  { '0.000000ns' D/U/Z; } } 
+        "XIN32M" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "XOUT32M" { 01Z  { '0.000000ns' D/U/Z; }  LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "ANT" { LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "UWBN" { LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+        "UWBP" { LHTX { '0ns' X/X/X/X; '25.000000ns' L/H/T/X; } } 
+    } } 
+} 
+
+//***************************************************************************//
+//                               TEST VECTORS                                //
+//***************************************************************************//
+
+PatternBurst 
+  MAIN_BRST { PatList { MAIN_TEST; } } 
+
+PatternExec 
+  MAIN_EXEC { PatternBurst MAIN_BRST; } 
+
+Pattern 
+  MAIN_TEST { 
+
+//***************************************************************************//
+//  TESTER LOOP...............1        PROCEDURES HAVE MEMORY....no          //
+//                                                                           //
+//  The range of Tests in this Tester Loop.......................1:8         //
+//                                                                           //
+//  TEST PROCEDURE............1        TYPE......................init        //
+//  SLOW TO TURN OFF..........false    SEQUENCES HAVE MEMORY.....no          //
+//  TEST SEQUENCE.............         TYPE......................init        //
+//***************************************************************************//
+
+Ann {* Experiment chip_compression (datetime = 1763690570) *}
+
+Ann {* Test_Section (tester_termination = none, test_section_type = scan, test_type = static, simulated, simplified ) *}
+
+Ann {* Test_Sequence (type = init) *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.1.1;  Stim_PI; 
+Ann {* Event Stim_PPI  ( ) 
+ "int_TM_1" = 0
+ "int_TM_2" = 0
+ "int_TM_3" = 0
+ "int_TM_4" = 0
+ "int_TM_5" = 0
+ "int_TM_6" = 0
+ "int_TM_7" = 0
+ "int_TM_8" = 0
+ "int_TM_9" = 0
+ "int_TM_10" = 0
+ "int_TM_11" = 0 *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.1.2;  Stim_PPI;  (Not Used) 
+  Macro "TEST" { 
+    "ALLPIs" = 0Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ00ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.2.1;  Stim_PI; 
+Ann {* Event Stim_PPI  ( ) 
+ "int_TM_1" = 1
+ "int_TM_2" = 1
+ "int_TM_3" = 1
+ "int_TM_4" = 1
+ "int_TM_5" = 1
+ "int_TM_6" = 1
+ "int_TM_7" = 1
+ "int_TM_8" = 1
+ "int_TM_9" = 1
+ "int_TM_10" = 0
+ "int_TM_11" = 0 *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.2.2;  Stim_PPI;  (Not Used) 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PPI  ( ) 
+ "int_TM_1" = 0
+ "int_TM_2" = 0
+ "int_TM_3" = 0
+ "int_TM_4" = 0
+ "int_TM_5" = 0
+ "int_TM_6" = 0
+ "int_TM_7" = 0
+ "int_TM_8" = 0
+ "int_TM_9" = 0
+ "int_TM_10" = 0
+ "int_TM_11" = 0 *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.3.1;  Stim_PPI;  (Not Used) 
+Ann {* Event Stim_PPI  ( ) 
+ "int_TM_1" = 1
+ "int_TM_2" = 1
+ "int_TM_3" = 1
+ "int_TM_4" = 1
+ "int_TM_5" = 1
+ "int_TM_6" = 1
+ "int_TM_7" = 1
+ "int_TM_8" = 1
+ "int_TM_9" = 1
+ "int_TM_10" = 0
+ "int_TM_11" = 0 *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.4.1;  Stim_PPI;  (Not Used) 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.5.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.5.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.5.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.6.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.6.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.6.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.7.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.7.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.7.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.8.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.8.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.8.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.9.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.9.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.9.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.10.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.10.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.10.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.11.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.11.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.11.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.12.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.12.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.12.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.13.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.13.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.13.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.14.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.14.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.14.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.15.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.15.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.15.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.16.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.16.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.16.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.17.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.17.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.17.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.18.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.18.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.18.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.19.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.19.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.19.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.20.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.20.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.20.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.21.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.21.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.21.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.22.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.22.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.22.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.23.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.23.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.23.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.24.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.24.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.24.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.25.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.25.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z1ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.25.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.26.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.26.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.26.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.27.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.27.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.27.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.28.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.28.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.28.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.29.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.29.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.29.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.30.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.30.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.30.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.31.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.31.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.31.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.32.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.32.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.32.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.33.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.33.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.33.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.34.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.34.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.34.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.35.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.35.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.35.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.36.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.36.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.36.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.37.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.37.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.37.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.38.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.38.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.38.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.39.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.39.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ1Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.39.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.40.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PPI  ( ) 
+ "int_compression_enable_0" = 1
+ "int_TM_0" = 1 *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.41.1;  Stim_PPI;  (Not Used) 
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.42.1;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.42.2;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ11ZZZ; } 
+Ann {* Event Stim_PI  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.1.1.42.3;  Stim_PI; 
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 000ZZZZZZZ1ZZ0Z0ZZZZZ01ZZZ; } 
+
+//***************************************************************************//
+//  TEST PROCEDURE............2        TYPE......................normal      //
+//                                                                           //
+//  The range of Tests in this Test Procedure....................1:1         //
+//                                                                           //
+//  SLOW TO TURN OFF..........false    SEQUENCES HAVE MEMORY.....no          //
+//  TEST SEQUENCE.............1        TYPE......................normal      //
+//***************************************************************************//
+
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.2.1.1.1;  Compressed_Input_Stream;  (no_overlap) 
+//  Processing the Static: EVENT 1.1.1.2.1.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 1;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CIS_1_TM_2" = \r473 0 11001001101101000000101110010001100011100010 \r3 0001 ; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//  Processing the Static: EVENT 1.1.1.2.1.2.1;  Diagnostic_Scan_Unload;  (Not Used) 
+  "1.1.1.2.1.2":
+  Ann {* 1.1.1.2.1.2 *} 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.2.1.2.2;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.1.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.3.1.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 2;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "COS_1_TM_2" = HHLHLL \r8 H LHLLLHLLLLHLLLLH \r10 L HHHHHLHLHLHHLLHHLHHLLLHLHLLLLLLHHLHHLHLHHLHLLHHLHHLLLLHHLLHLHLLLLHLLHHLLHL \r8 H LHLHHHLLLLLLHHLLLLHLLHLHLLHHLHLHHLLLHHHHHHHLHHHLLLHLLHHHLLLHHLHHHLLHLHHHHHHHLHHLLHLLLHLHLLHLLLHHHHHHLLLHH \r11 L HHHHLHHHLHLLHHLLH \r3 HLLL HLHHHHLHLHHLHLLHLHLHHLLHLHLHLLHLLLHLHLHLLHHLLLLLLHLLLLHHHHLHHLLLLLLHHHLLHLLHLLHLLLHHHHLHHHLLLHHHLHLLHLHHHLHLLLLLHHHLHLLHLHHLHLLLHHHLHLLLLHLLHLHHHLHHLLHHLLHLHLLLLH \r8 L HHLHLLLLHHLLHH \r8 L HLLHHLLLLHLLHHHLHLHHHHLHLLHLLHLHLLHHLLLLLLLHHLLHHHHHLHLLHHLHHHLLLLLLLH; 
+    "CIS_1_TM_2" = \r473 0 11001001101101000000101110010001100011100010 \r3 0001 ; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST PROCEDURE............3        TYPE......................normal      //
+//                                                                           //
+//  The range of Tests in this Test Procedure....................2:3         //
+//                                                                           //
+//  SLOW TO TURN OFF..........false    SEQUENCES HAVE MEMORY.....no          //
+//  TEST SEQUENCE.............2        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.1.2.1;  Load_Channel_Masks; 
+  "1.1.1.3.1.2":
+  Ann {* 1.1.1.3.1.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.1.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.3.1.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.1.2.4;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.2.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.3.2.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 3;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r16 1100 1; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ1ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 3;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r529 1 ; 
+    "COS_1_TM_2" = HHLHLLHLLLHLLLLHLHLLHLLLHLHLHHLLLHLLHLLHHLHHHLLHHLLLLHLLHHHHLHLLHLHLHHHHHLLHLLLHLLLLHHLLHHLHLLLLHLLLLHLLHLLHLLLHLHLLHLLLLHLLHHHLLHHHLLLLLLHLLHLLHHLLHHLHHLHLHLHHLLLHLHLHHLLLLHHHLHLHHLHHHHLLHLHHHLLHHHLLLHHHLLHLHLLHLLHLHHLLHLHHHHLLLLHLLLHLLHLLLHHLHLHHLLLHLHHLLLLLHHLLLHHLHHHHHHLHLLLLLLHHHHHLHLHLHLHHHHHHHLHHLHLLLHHHLHLHHHHHLHHHLHHLLHHLLHLLHHLLLHHHLLLHHHHLLHLHHHLLLLHHHHHHLLHLLHLLLLHHHHHHLLLLHHLLLHHHHHHHLLLHHHLLLHHHLHLHLHLHHHLLHHLLLHHHHLHHLHHHHLLHLHHLHLLLHHLHHLHHHHLLLLHHLLLHLHHHLHHHLHLHHLLLHHLHLLLHLLHLLLHHHLHLLHLHHHLHHLLHHHHLLLLHH; 
+    "CIS_1_TM_2" = \r473 0 11001001101101000000101110010001100011100010 \r3 0001 ; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST SEQUENCE.............3        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.2.2.1;  Load_Channel_Masks; 
+  "1.1.1.3.2.2":
+  Ann {* 1.1.1.3.2.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.2.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.3.2.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.3.2.2.4;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.1.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.4.1.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 4;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r16 0011 0; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ0ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 4;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r529 1 ; 
+    "COS_1_TM_2" = \r7 L HHHLHHHLLLHLHHLLLLLHLHLLLLHLLHLLHLHLLLLHHLLHHLHHHHLLHLHHLLLHLHHHLLLHLLHLLHLHLHLHLLLLHLLHHHLHLHHLLHHLHHHLHHHHHLHHHHLLHHLLHLHHHLLHHLLHLHHLHHLLLLLLLHHLLHLLLHHHLHHHLLLLLHHHLHLLHHHLHLLHLHHHLLHHLLLLHHHHLLLHHHHLHHLHLLLHHLHHHHLHLLLHLLLHLLHHHHLHHLHHLLLHLLHLHLLLHHHLHLHHHHLLLLHHHHHLHLLLHLHLHHLLLLLLHHLHHHHHLLLLLHLHHLHLHLHHHLLLLHHLHLHHLLHH \r6 HL HHLLHHHHLLHLLHHLHLHHLLHLHLLL \r3 LLLH LLLLHLHHLLLHLLLLHLHLHLLLLLLHHLLHHHLLHHHLLHHHHHLH \r3 HLLL LHHHLHHLHHLHLHHHHLLHHHLLLHLHLLLLLHHHHHHLLLHHHLHHHLLHLLLLLHLLHHLHHLHLLLLHLLHHLLLLHL; 
+    "CIS_1_TM_2" = \r49 0 11101111001111110 \r9 1 0011101011001000111011111100100011101011010100111001001100111011001110100000011001111111011111010101011000101001101111010011110100011010101111010100000100101010100011000100111011010000100000010100001011010001111001111111011110110111101000011000011010101001010001011010001011101001111110111011001110110110001100110110010100001110111101100110101100111001101111000110011111011111000000101101010100101011110000001101101001101110001110000110110010100001000001; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST PROCEDURE............4        TYPE......................normal      //
+//                                                                           //
+//  The range of Tests in this Test Procedure....................4:5         //
+//                                                                           //
+//  SLOW TO TURN OFF..........false    SEQUENCES HAVE MEMORY.....no          //
+//  TEST SEQUENCE.............4        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.1.2.1;  Load_Channel_Masks; 
+  "1.1.1.4.1.2":
+  Ann {* 1.1.1.4.1.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.1.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.4.1.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.1.2.4;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.2.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.4.2.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 5;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r65 0 ; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ0ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 5;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r264 01 0; 
+    "COS_1_TM_2" = HHLHLL \r8 H LHLHHLLHHLLLHHHHLLHLLLHHHLHLHLHHHLLHHHHLLHHHHLLHHHLHHH \r5 HL LLHLHHLLLLLHLLHLHLLLLHHLLLHHHLLHLLHHLL \r8 H LHHLLHHLLLHLLHHHHLLLHLHHHLHLHHHHLHHHLLHLHLHHHHLL \r5 LH LLLLHLLLHHHLHHHLHLLHLHLLHLLHLHLHHLHLLLHHHHLLLHHHLHHLHLLHLLHHHLLLHHHLLLLLLLHLLLLLHHLHLHLHHLLHLLHHHLLHLLHHLHLHHLLLHHHLLHLLHHLLLHL \r9 H \r8 L HLLLHHHLLHHHLLLLHLHHHHLLLHLLHLHHHLLLHHHHLHLHLLHHHHLLLHHHHHHLHLLLHHLHLHHLLHLLHLHHHHHHLLHHLLHLHLHHHHLLLLLHLLLLHLHHHHHHLLLLHLLLHHLLLHLHLHLLLLHHLHLLLHLHLLHHHLLHLHHHHHHLHHLLHHHLLHHLHLLHHLLLLLHLLLHHLLLLHHLHLLH; 
+    "CIS_1_TM_2" = 0011001000011000111101101011001101000101011100110110111100001000110111101111010111111000111101011 \r8 0 110101101110 \r3 1011 \r7 0 1101101000011101110001000111011010010011111011001 \r3 0111 001011101000001001111001110101101101011111000000111100100011011000010101110000100001111011100010001110101000111001011100010110011010010000011000100110110101010111101101110000000111000101110010001001111010000111010000101111000110010101101111100111000011111101100110001100 \r9 1 00000011100101101011000000110000110100101000111100111; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST SEQUENCE.............5        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.2.2.1;  Load_Channel_Masks; 
+  "1.1.1.4.2.2":
+  Ann {* 1.1.1.4.2.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.2.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.4.2.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.4.2.2.4;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.1.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.5.1.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 6;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r65 1 ; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ1ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 6;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r264 01 0; 
+    "COS_1_TM_2" = LLLLHLHLHLH \r9 L HLLLL \r3 LLLH \r5 LH LLLHLLLLLHLLLHLLLLLHLHLHLLLH \r4 LHLL LHLHLHLLLLLHLLLLLHLLLLLHLH \r17 L HLLLHLHLHLHLLLHLLLLLLLHLLLHLHLHLLLLLHLHLHLL \r6 LH LLLHLHLLLHLLLLLH \r4 LHLL LHLHLLLLLLLHLHLHLH \r17 L HLHLHLLLLLHLHLHLLLHLHLLLLLH \r19 L \r6 HL \r3 LLHL LLLLHLHLLLHLHLHLLLHLLLLLHLHLLLHLLLHLHLLLHLHLLLH \r3 LHLL \r7 L HLLLHLHLLLLLHLLLHLLLLLH \r17 L HLHLHLLLHLLLHLHLHLHLLLLLLLHLHLLLHLHLLLH \r4 LHLL LLLHLLLHLHLH \r9 L HLLLLLHLLLLLHLLLHLHLL; 
+    "CIS_1_TM_2" = 0110011110001 \r5 10 11010011100110111000001000001101001001011101101001101100110011110010110111101010010000100001100110010110101101101011011000001001111010100101011101011 \r6 10 \r8 1 0000111010010111011110011100000010101001000110111110010101101010000100001111100100100101011010011100001100010011110100011100001010100010011111010111110001001000011010111011100010011000011100001010100101111011000001011111010100110100001001101100011101010101110001100110110010000100000111000000110111010011011001101110100010011110111100101; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST PROCEDURE............5        TYPE......................normal      //
+//                                                                           //
+//  The range of Tests in this Test Procedure....................6:8         //
+//                                                                           //
+//  SLOW TO TURN OFF..........false    SEQUENCES HAVE MEMORY.....no          //
+//  STATIC FAULTS.............308828   PERCENT STATIC FAULTS.....18.905281   //
+//  TEST SEQUENCE.............6        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.1.2.1;  Load_Channel_Masks; 
+  "1.1.1.5.1.2":
+  Ann {* 1.1.1.5.1.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.1.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.5.1.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.1.2.4;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.2.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.5.2.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 7;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r65 1 ; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ1ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 7;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r529 0 ; 
+    "COS_1_TM_2" = HLLLHLLHLLLLHHLHLHHHLHHHHHLHLHHLHLLLLLLHLHHLL \r6 LH HHLLHLLLHHHHLLLHLLLLHLLLHLHLHHLHHLLHLLLHLHLHLH \r8 L HHLHHLLLHHLHHLLLLLHHHLLHLLHLLLLL \r4 HLLH HHLLLLHHHLHHHLHHLHHHHHHHLHHLHHHLLLLLLHHLLHLLLHLHHLHHLLHHHHLHHHLLHLLLHHHLLHHLHHHHLHLLHLLLLLHLHLHLLLLLHLLLLHLHHHLLHLHLHHLHLLHHHHLHLLH \r3 LHLL HHLLHHLLLLLHHHHHHHLHHHHHHLLHLLLLLLHLHLH \r5 HL LHHLLHHLLLH \r9 L HLLLHHLHLHLLLHLHLHHLLLLLHLLLHLLLLHHLHHHHHHLLHHHLLHHLLHLHHHLLLLLLLHHLLLHHHLLHLLHHHHHHLLHHLLHLHHLLLLLHLHLLLLHHHHHLHL \r8 H LLHHLHLLLHLHLHLHHLLHLLHHHLLHHLHHLHLH; 
+    "CIS_1_TM_2" = 0100001010110100001101101011111011111001001000101 \r3 0100 00011101101110001001110000111010000010010001100001001010000100110101100001101010100 \r3 0001 101110000001100101110000001010001011010011101110011011111 \r3 1100 0010100101 \r3 1110 011111110100011100000111001101110001101011001111100111001001010010101011001110101101010001110111010100111000011001011001010101110000010101010000001001110010101000011000101101010010001100100100010001110010111010010110011000001101111111000011000100001110001111001101001010111101100011; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST SEQUENCE.............7        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.2.2.1;  Load_Channel_Masks; 
+  "1.1.1.5.2.2":
+  Ann {* 1.1.1.5.2.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.2.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.5.2.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.2.2.4;  Compressed_Output_Stream;  (overlap) 
+Ann {* Test_Sequence () *}
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Compressed_Input_Stream  (default_value=random ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.3.1.1;  Compressed_Input_Stream;  (overlap) 
+//  Processing the Static: EVENT 1.1.1.5.3.1.2;  Internal_Scan_Load;  (Not Used) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 8;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r65 1 ; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ1ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 8;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r529 0 ; 
+    "COS_1_TM_2" = LHLHHLLLLHLHHLL \r3 HLLH HHLLHLHHHHLLLLHHLHLHHHHHLHLLLHLHHH \r9 L HHHHHLLLHLLLLHLHHHLHLLLLLLLHLHLLHLLLHHHHLLHLLLLHHLHLLHLHLHHLLHHHHHLLHLHHLLHHLHHLLHHLHLHLLHLHLHHLHLLLLHHLHHHHLLLHHHLLLLHLHLHHHHLLHLLHHLLHHHHLHHLHLHLHLLHLHLLHLLLHLHLHLLHHHHLHLLLLLHHLLLLHHLLHLLHLLL \r11 H LLLLHHLLLLHHHHHLHLHLLHHLLLHLHLLHLHLHHLLLLLLHLLHLHHLLLHHLHLHHLHLHLHLHHHLLHLHLLHHHHHLHL \r8 H LLLHHLHHHHLHLLLLHLHHHHHLLHHLHLLHLHHHHLLHHHHLLLLHHLHHLHLHHLLHLLHHHLLHH \r8 L HHLHLHHHLLHHLHHHHLHLLLLLHLLHHLLLHLHLLHHLHLHHLHHLHHHHLHHLLHHHHHLHLLHLLHLHHLHLLLHHLHHH; 
+    "CIS_1_TM_2" = 01100000111111011010000000100100101 \r9 0 100110001000011110110011111101000101100110000001011111010111110000110001010100101010011011010011001110011110010101011000010100001100101100111100110100101000010100010101010010110110001001 \r8 0 100111011101100001000101010000110110000111101000000110001111100111010001110001111010000011001000011000100001100010010001001101111100000101000011000111000011110111111010 \r12 1 010010011010101000111111001000100001100001101111000000111000111010101011010001110011011000001101011110000000100; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+//***************************************************************************//
+//  TEST SEQUENCE.............8        TYPE......................normal      //
+//***************************************************************************//
+
+
+Ann {* Pattern (pattern_type = static) *}
+
+Ann {* Event Load_Channel_Masks  (scan_cycle = 0 ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.3.2.1;  Load_Channel_Masks; 
+  "1.1.1.5.3.2":
+  Ann {* 1.1.1.5.3.2 *} 
+Ann {* Event Use_Channel_Masks  ( ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.3.2.2;  Use_Channel_Masks; 
+//  Processing the Static: EVENT 1.1.1.5.3.2.3;  Diagnostic_Scan_Unload;  (Not Used) 
+Ann {* Event Compressed_Output_Stream  (no_overlap ) *}
+
+//  Processing the Static: EVENT 1.1.1.5.3.2.4;  Compressed_Output_Stream;  (no_overlap) 
+// Inserted the Scan Sequence:  Scan_Preconditioning_Sequence  
+Ann {* Define_Sequence (scanprecond) *}
+
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  MIPG_Reset_Sequence  
+Ann {* Define_Sequence (mipgreset) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z P0001ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence:  ChannelMask_Preconditioning_Sequence  
+Ann {* Define_Sequence (channelmaskprecon) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00011ZZZZZ1 \r10 Z 01ZZZ; } 
+// Inserted the Scan Sequence # 9;  ChannelMask_Cycle_Sequence  
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+Ann {* Define_Sequence (channelmaskcycle, repeat = 65) *}
+
+  Macro "SCAN_CMSR_TM_2" { 
+    "CMSR_1_TM_2" = \r65 1 ; } 
+// Inserted the Scan Sequence:  ChannelMask_Exit_Sequence  
+Ann {* Define_Sequence (channelmaskexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1ZZZZ1ZZZZZ01ZZZ; } 
+// Inserted the Scan Sequence # 9;  Scan_Sequence  
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+Ann {* Define_Sequence (scansequence, repeat = 529) *}
+
+  Macro "SCAN_TM_2" { 
+    "CME_0_TM_2" = \r529 0 ; 
+    "COS_1_TM_2" = LHLHLHHLLLLLLHLHHHLHHLLLHHLHLHLLLLHLHLLLHLLLLHHHLLLLHLLLHLLLLHLLHLLHLLHHLHLHHLLHHLHHLLHLHLHHLLLHHHLLLLHL \r8 H LHLHHHLLHLLHLHLHHLHLHLLHLHLHHLHLHHLHLLLLLLHHHLHLHHLHLHLHHLHLHHLL \r8 H LHLLLHLLLHHHHHLHHLLLHHHHHHLLLLHHLHHHHHL \r8 H LLHLHLLLLLHHLHHLLHHLLHLHLHLLHHLHHLLHHHLLHLHHHHHLLLHHHHLLHLLLHHLHLHLLLLLHLLLLHLLHLHHHHHLHHHLLLHHLLHLHHLHLLHLLHLLHLLLHLHLLH \r13 L HLLLLHHLHHHHHHLLHLLHHLL \r4 HHLH HLHLHHLLLHLHLHLHLLHLLLLHHLHLLHLHHLHLLHLLLHLLLHHHLLLLHHLLHLH \r14 L HLHHHLL \r8 H \r10 L HHLLHHHHHLHLLHHLHHHLLLLLLLH; } 
+// Inserted the Scan Sequence:  Scan_Exit_Sequence  
+Ann {* Define_Sequence (scanexit) *}
+
+  Macro "SCAN_CYCLE_TM_2" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+Ann {* Test_Sequence () *}
+
+
+// Inserted final non-scan Pattern
+  Macro "TEST" { 
+    "ALLPIs" = 1Z; 
+    "ALLPOs" = XXX; 
+    "ALLCIOs" = \r11 Z 0 \r24 Z 00001ZZZZZ1 \r10 Z 01ZZZ; } 
+  } 

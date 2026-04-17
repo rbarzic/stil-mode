@@ -1,0 +1,31 @@
+{
+  "name": "tree-sitter-stil",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for IEEE Std 1450-1999 STIL",
+  "main": "bindings/node.js",
+  "types": "bindings/node.d.ts",
+  "keywords": ["parser", "tree-sitter", "stil", "ieee-1450"],
+  "license": "MIT",
+  "dependencies": {
+    "node-addon-api": "^8.0.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.24.0",
+    "prettier": "^3.0.0"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.stil",
+      "file-types": ["stil"],
+      "first-line-regex": "^STIL\\s+[0-9]+\\.[0-9]+\\s*;"
+    }
+  ]
+}

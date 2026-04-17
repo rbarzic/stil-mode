@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.elc
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+tree-sitter-stil/src/
+tree-sitter-stil/bindings/
+tree-sitter-stil/node_modules/
+*.o
+*.so
+.DS_Store
+standards/*.pdf

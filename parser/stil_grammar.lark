@@ -1,0 +1,374 @@
+// STIL Grammar — IEEE Std 1450-1999
+// Lark EBNF grammar for the STIL language
+
+start: "STIL" FLOAT ";" toplvl*
+
+// ── Helpers ─────────────────────────────────────────────────────
+// STIL identifiers can be bare names or double-quoted strings.
+
+ns: NAME | STRING
+
+// ── Top-level blocks ────────────────────────────────────────────
+
+toplvl: header_block
+     | include_stmt
+     | userkeywords_stmt
+     | userfunctions_stmt
+     | ann_stmt
+     | signals_block
+     | signalgroups_block
+     | scanstructures_block
+     | spec_block
+     | selector_block
+     | timing_block
+     | patternburst_block
+     | patternexec_block
+     | procedures_block
+     | macrodefs_block
+     | pattern_block
+
+// ── Header ──────────────────────────────────────────────────────
+
+header_block: "Header" "{" header_item* "}"
+
+header_item.2: "Title" STRING ";"
+             | "Date" STRING ";"
+             | "Source" STRING ";"
+             | "History" "{" ann_stmt* "}"
+
+// ── Include ─────────────────────────────────────────────────────
+
+include_stmt: "Include" STRING ifneed? ";"
+
+ifneed: "IfNeed" NAME
+
+// ── UserKeywords / UserFunctions ────────────────────────────────
+
+userkeywords_stmt: "UserKeywords" NAME+ ";"
+userfunctions_stmt: "UserFunctions" NAME+ ";"
+
+// ── Annotations ─────────────────────────────────────────────────
+
+ann_stmt: "Ann" ANN_BODY
+
+ANN_BODY.2: /\{\*.*?\*\}/s
+
+// ── Signals ─────────────────────────────────────────────────────
+
+signals_block: "Signals" "{" signal_def* "}"
+
+signal_def: ns signal_dir ";" -> sig_simple
+          | ns signal_dir "{" signal_attr* "}" -> sig_detailed
+
+signal_dir: "In" | "Out" | "InOut" | "Supply" | "Pseudo"
+
+signal_attr: "Termination" termination_type ";"
+           | "DefaultState" default_state ";"
+           | "Base" base_type WFC_LIST ";"
+           | "Alignment" align_type ";"
+           | "ScanIn" ("(" INT ")")? ";"
+           | "ScanOut" ("(" INT ")")? ";"
+           | "DataBitCount" INT ";"
+
+termination_type: "TerminateHigh" | "TerminateLow" | "TerminateOff" | "TerminateUnknown"
+default_state: "U" | "D" | "Z" | "ForceUp" | "ForceDown" | "ForceOff"
+base_type: "Hex" | "Dec"
+align_type: "MSB" | "LSB"
+
+// ── SignalGroups ────────────────────────────────────────────────
+
+signalgroups_block: "SignalGroups" ns? "{" sg_def* "}"
+
+sg_def: ns "=" SIGREF_EXPR ";" -> sg_simple
+      | ns "=" SIGREF_EXPR "{" sg_attr* "}" -> sg_detailed
+
+sg_attr: "Termination" termination_type ";"
+       | "DefaultState" default_state ";"
+       | "Base" base_type WFC_LIST ";"
+       | "Alignment" align_type ";"
+       | "ScanIn" ("(" INT ")" | INT)? ";"
+       | "ScanOut" ("(" INT ")" | INT)? ";"
+       | "DataBitCount" INT ";"
+
+// ── ScanStructures ──────────────────────────────────────────────
+
+scanstructures_block: "ScanStructures" ns? "{" scanchain_def* "}"
+
+scanchain_def: "ScanChain" ns "{" scanchain_item* "}"
+
+scanchain_item: "ScanLength" INT ";"
+              | "ScanOutLength" INT ";"
+              | "ScanCells" scan_cell_list ";"
+              | "ScanIn" ns ";"
+              | "ScanOut" ns ";"
+              | "ScanMasterClock" ns+ ";"
+              | "ScanSlaveClock" ns+ ";"
+              | "ScanInversion" INT ";"
+
+scan_cell_list: (SCAN_CELL_ITEM | NAME)+
+SCAN_CELL_ITEM: /!/
+
+// ── Spec ────────────────────────────────────────────────────────
+
+spec_block: "Spec" ns? "{" spec_entry+ "}"
+
+spec_entry: "Category" ns "{" spec_var_def* "}"
+          | "Variable" ns "{" spec_cat_def* "}"
+
+spec_var_def: ns "=" TIME_EXPR ";" -> spec_var_simple
+            | ns "{" spec_value_item* "}" -> spec_var_multi
+
+spec_cat_def: ns "=" TIME_EXPR ";" -> spec_cat_simple
+            | ns "{" spec_value_item* "}" -> spec_cat_multi
+
+spec_value_item: "Min" TIME_EXPR ";"
+               | "Typ" TIME_EXPR ";"
+               | "Max" TIME_EXPR ";"
+               | "Meas" TIME_EXPR ";"
+
+// ── Selector ────────────────────────────────────────────────────
+
+selector_block: "Selector" ns "{" selector_entry* "}"
+
+selector_entry: ns selector_value ";"
+
+selector_value: "Min" | "Typ" | "Max" | "Meas"
+
+// ── Timing / WaveformTable ──────────────────────────────────────
+
+timing_block: "Timing" ns? "{" timing_item* "}"
+
+timing_item: "SignalGroups" ns ";"
+           | waveform_table
+
+waveform_table: "WaveformTable" ns "{" wft_item* "}"
+
+wft_item: "Period" TIME_EXPR ";"
+        | "InheritWaveformTable" dotted_name ";"
+        | subwaveforms_block
+        | waveforms_block
+
+dotted_name: ns ("." ns)*
+
+subwaveforms_block: "SubWaveforms" "{" subwf_def* "}"
+
+subwf_def: ns ":" "Duration" TIME_EXPR "{" subwf_event* "}"
+
+subwf_event: ns ":" TIME_EXPR event_or_list ";" -> subwf_labeled_event
+           | TIME_EXPR event_or_list ";"
+
+event_or_list: event_list ("[" INT "]")? -> evt_list
+             | event_name -> evt_single
+
+event_list: event_name ("/" event_name)+
+
+event_name: "ForceDown" | "D"
+          | "ForceUp" | "U"
+          | "ForceOff" | "Z"
+          | "ForcePrior" | "P"
+          | "ForceUnknown" | "N"
+          | "CompareLow" | "L"
+          | "CompareHigh" | "H"
+          | "CompareUnknown" | "X"
+          | "CompareOff" | "T"
+          | "CompareValid" | "V"
+          | "CompareLowWindow" | "l"
+          | "CompareHighWindow" | "h"
+          | "CompareOffWindow" | "t"
+          | "CompareValidWindow" | "v"
+          | "ExpectLow" | "R"
+          | "ExpectHigh" | "G"
+          | "ExpectOff" | "Q"
+          | "Marker" | "M"
+          | "LogicLow" | "A"
+          | "LogicHigh" | "B"
+          | "LogicZ" | "F"
+          | "Unknown" | "?"
+
+waveforms_block: "Waveforms" "{" waveform_entry* "}"
+
+waveform_entry: sig_or_group ns? "{" wf_char_def* "}"
+
+sig_or_group: ns | SIGREF_EXPR
+
+wf_char_def: "InheritWaveform" dotted_name ";"
+           | wfc_single
+           | wfc_list_block
+           | wfc_subwf_block
+
+wfc_single: WFC_CHAR "{" wfc_event_item* "}"
+
+wfc_list_block: WFC_LIST "{" wfc_event_item* "}"
+
+wfc_event_item: "InheritWaveform" dotted_name ";"
+              | ns ":" TIME_EXPR event_or_list ";" -> wf_labeled_event
+              | TIME_EXPR event_or_list ";"
+
+wfc_subwf_block: wfc_ref "{" wfc_subwf_item* "}"
+
+wfc_ref: WFC_CHAR -> wfc_ref_single
+       | WFC_LIST -> wfc_ref_list
+
+wfc_subwf_item: ns ":" TIME_EXPR REPEAT_OP? subwf_ref ";" -> wfc_subwf_labeled
+              | TIME_EXPR REPEAT_OP? subwf_ref ";"
+
+subwf_ref: ns ";" -> subwf_name
+         | ns "[" (INT | "#") "]" ";" -> subwf_indexed
+
+// ── PatternBurst ────────────────────────────────────────────────
+
+patternburst_block: "PatternBurst" ns "{" pb_item* "}"
+
+pb_item: "SignalGroups" ns ";"
+       | "MacroDefs" ns ";"
+       | "Procedures" ns ";"
+       | "ScanStructures" ns? ";"
+       | "Start" ns ";"
+       | "Stop" ns ";"
+       | pb_termination
+       | patlist_block
+
+pb_termination: "Termination" "{" term_entry* "}"
+
+term_entry: sig_or_group termination_type ";"
+
+patlist_block: "PatList" "{" patlist_entry* "}"
+
+patlist_entry: ns ";" -> patlist_simple
+             | ns "{" pb_item* "}" -> patlist_detailed
+
+// ── PatternExec ─────────────────────────────────────────────────
+
+patternexec_block: "PatternExec" ns? "{" pe_item* "}"
+
+pe_item: "Category" ns ";"
+       | "Selector" ns ";"
+       | "Timing" ns ";"
+       | "PatternBurst" ns ";"
+
+// ── Procedures ──────────────────────────────────────────────────
+
+procedures_block: "Procedures" ns? "{" proc_def* "}"
+
+proc_def: ns "{" pattern_stmt* "}"
+
+// ── MacroDefs ───────────────────────────────────────────────────
+
+macrodefs_block: "MacroDefs" ns? "{" macro_def* "}"
+
+macro_def: ns "{" pattern_stmt* "}"
+
+// ── Pattern ─────────────────────────────────────────────────────
+
+pattern_block: "Pattern" ns "{" pattern_body* "}"
+
+pattern_body: "TimeUnit" TIME_EXPR ";"
+            | pattern_stmt
+
+// ── Pattern statements ──────────────────────────────────────────
+
+?pattern_stmt: label_prefix vector_stmt -> labeled_vector
+            | label_prefix condition_stmt -> labeled_condition
+            | label_prefix wft_stmt -> labeled_wft
+            | label_prefix call_stmt -> labeled_call
+            | label_prefix macro_stmt -> labeled_macro
+            | label_prefix loop_stmt -> labeled_loop
+            | label_prefix matchloop_stmt -> labeled_matchloop
+            | label_prefix goto_stmt -> labeled_goto
+            | label_prefix breakpoint_stmt -> labeled_breakpoint
+            | label_prefix iddq_stmt -> labeled_iddq
+            | label_prefix stop_stmt -> labeled_stop
+            | label_prefix scanchain_stmt -> labeled_scanchain
+            | label_prefix shift_stmt -> labeled_shift
+            | label_prefix ann_stmt -> labeled_ann
+            | vector_stmt
+            | condition_stmt
+            | wft_stmt
+            | call_stmt
+            | macro_stmt
+            | loop_stmt
+            | matchloop_stmt
+            | goto_stmt
+            | breakpoint_stmt
+            | iddq_stmt
+            | stop_stmt
+            | scanchain_stmt
+            | shift_stmt
+            | ann_stmt
+
+label_prefix: ns ":"
+
+vector_stmt: "Vector" "{" vec_data_item* "}"
+           | "V" "{" vec_data_item* "}"
+
+condition_stmt: "Condition" "{" vec_data_item* "}"
+              | "C" "{" vec_data_item* "}"
+
+wft_stmt: "WaveformTable" ns ";"
+        | "W" ns ";"
+
+call_stmt: "Call" ns ";" -> call_simple
+         | "Call" ns "{" call_data_item* "}" -> call_with_data
+
+macro_stmt: "Macro" ns ";" -> macro_simple
+          | "Macro" ns "{" call_data_item* "}" -> macro_with_data
+
+loop_stmt: "Loop" INT "{" pattern_stmt* "}"
+
+matchloop_stmt: "MatchLoop" match_loop_count "{" pattern_stmt+ breakpoint_block "}"
+
+match_loop_count: INT | "Infinite"
+
+breakpoint_block: "BreakPoint" "{" pattern_stmt+ "}"
+
+goto_stmt: "Goto" ns ";"
+
+breakpoint_stmt: "BreakPoint" ";" -> bp_simple
+               | "BreakPoint" "{" pattern_stmt* "}" -> bp_block
+
+iddq_stmt: "IDDQ" "TestPoint" ";"
+
+stop_stmt: "Stop" ";"
+
+scanchain_stmt: "ScanChain" ns ";"
+
+shift_stmt: "Shift" "{" pattern_stmt+ "}"
+
+vec_data_item: sig_or_group "=" vec_data ";" -> vec_cyclized
+             | sig_or_group "{" vec_data ";"+"}" -> vec_multibit
+             | noncyclized_data
+
+noncyclized_data: "@" INT sig_or_group "=" event_or_list ";" -> nc_single
+                | "@" INT "{" nc_item+ "}" -> nc_block
+
+nc_item: sig_or_group "=" event_or_list ";"
+
+call_data_item: sig_or_group "=" vec_data ";"
+
+vec_data: VEC_DATA_CHUNK+
+
+VEC_DATA_CHUNK: /\\r[0-9]+/ | /\\h[A-Za-z0-9]*/ | /\\d[A-Za-z0-9]*/ | /\\l[0-9]*/ | /\\w/ | /[0-9A-Za-z#%]+/
+
+// ── Common terminals ────────────────────────────────────────────
+
+SIGREF_EXPR.2: /'[^']*'/
+
+TIME_EXPR.2: /'[^']*'/
+
+WFC_CHAR: /[0-9A-Za-z]/
+
+WFC_LIST.2: /[0-9A-Za-z]{2,}/
+
+REPEAT_OP: /\\r[0-9]+/
+
+// ── Lexer-level rules ───────────────────────────────────────────
+
+COMMENT: /\/\/[^\n]*/ | /\/\*[\s\S]*?\*\//
+
+%import common.ESCAPED_STRING -> STRING
+%import common.SIGNED_FLOAT -> FLOAT
+%import common.INT
+%import common.CNAME -> NAME
+%import common.WS
+%ignore WS
+%ignore COMMENT

@@ -1,0 +1,206 @@
+STIL 1.0; 
+
+//***************************************************************************//
+//                             STIL SIGNALS FILE                             //
+//Cadence(R) Modus(TM) DFT Software Solution, Version 25.11-s001_1, built Jul//
+//***************************************************************************//
+//                                                                           //
+//  FILE CREATED..............November 21, 2025 at 03:39:28                  //
+//                                                                           //
+//  PROJECT NAME..............from_genus_1d-comp-sdf                         //
+//                                                                           //
+//  TESTMODE..................ELASTIC                                        //
+//                                                                           //
+//  INEXPERIMENT..............chip_compression                               //
+//                                                                           //
+//  TDR.......................dummy.tdr                                      //
+//                                                                           //
+//  TEST PERIOD...............80.000   TEST TIME UNITS...........ns          //
+//  TEST PULSE WIDTH..........25.000                                         //
+//  TEST STROBE OFFSET........55.000   TEST STROBE TYPE..........edge        //
+//  TEST BIDI OFFSET..........0.000                                          //
+//  TEST PI OFFSET............0.000    X VALUE...................Z           //
+//                                                                           //
+//                                     SCAN OVERLAP..............yes         //
+//  SCAN PERIOD...............80.000   SCAN TIME UNITS...........ns          //
+//  SCAN PULSE WIDTH..........20.000                                         //
+//  SCAN STROBE OFFSET........25.000   SCAN STROBE TYPE..........edge        //
+//  SCAN BIDI OFFSET..........0.000                                          //
+//  SCAN PI OFFSET............0.000    X VALUE...................Z           //
+//                                                                           //
+//                                                                           //
+//   Individually set PIs                                                    //
+//  "P10" (PI # 12)                                                          //
+//  TEST OFFSET...............25.000   PULSE WIDTH...............25.000      //
+//  SCAN OFFSET...............45.000   PULSE WIDTH...............20.000      //
+//                                                                           //
+//  "P5" (PI # 37)                                                           //
+//  TEST OFFSET...............25.000                                         //
+//  SCAN OFFSET...............45.000   PULSE WIDTH...............20.000      //
+//                                                                           //
+//  "P6" (PI # 38)                                                           //
+//  TEST OFFSET...............0.000                                          //
+//  SCAN OFFSET...............45.000   PULSE WIDTH...............20.000      //
+//                                                                           //
+//  Active TESTMODEs TM = 2 ..ELASTIC                                        //
+//                                                                           //
+//***************************************************************************//
+
+//***************************************************************************//
+//                              DEFINE SIGNALS                               //
+//***************************************************************************//
+
+  Signals { 
+    "ADCIN0" InOut;      // pinName = ADCIN0;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ADCIN1" InOut;      // pinName = ADCIN1;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ADCIN2" InOut;      // pinName = ADCIN2;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ADCIN3" InOut;      // pinName = ADCIN3;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ADCIN4" InOut;      // pinName = ADCIN4;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "AI11RFN" InOut;      // pinName = AI11RFN;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "AI11RFP" InOut;      // pinName = AI11RFP;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ANATEST0" InOut;      // pinName = ANATEST0;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ANATEST1" InOut;      // pinName = ANATEST1;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P0" InOut;      // pinName = P0;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P1" InOut;      // pinName = P1;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P10" InOut;      // pinName = P10;  tf = -ES  BIDI ; testOffset = 25.000000;  scanOffset = 45.000000;  
+    "P11" InOut;      // pinName = P11;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P12" InOut;      // pinName = P12;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P13" InOut;      // pinName = P13;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P14" InOut;      // pinName = P14;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P15" InOut;      // pinName = P15;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P16" InOut;      // pinName = P16;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P17" InOut;      // pinName = P17;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P18" InOut;      // pinName = P18;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P19" InOut;      // pinName = P19;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P2" InOut;      // pinName = P2;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P20" InOut;      // pinName = P20;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P21" InOut;      // pinName = P21;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P22" InOut;      // pinName = P22;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P23" InOut;      // pinName = P23;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P24" InOut;      // pinName = P24;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P25" InOut;      // pinName = P25;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P26" InOut;      // pinName = P26;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P27" InOut;      // pinName = P27;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P28" InOut;      // pinName = P28;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P29" InOut;      // pinName = P29;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P3" InOut;      // pinName = P3;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P30" InOut;      // pinName = P30;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P31" InOut;      // pinName = P31;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P4" InOut;      // pinName = P4;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P5" InOut;      // pinName = P5;  tf = -PRST  BIDI ; testOffset = 25.000000;  scanOffset = 45.000000;  
+    "P6" InOut;      // pinName = P6;  tf = -ES  -CML  BIDI ; testOffset = 0.000000;  scanOffset = 45.000000;  
+    "P7" InOut;      // pinName = P7;  tf = -TC  -CME  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P8" InOut;      // pinName = P8;  tf = -SE  +CMLE  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "P9" InOut;      // pinName = P9;  tf = +SE  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "POTCE" InOut;      // pinName = POTCE;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "POTRE" InOut;      // pinName = POTRE;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "POTWE" InOut;      // pinName = POTWE;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "RFTEST0" InOut;      // pinName = RFTEST0;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "RFTEST1" InOut;      // pinName = RFTEST1;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "RSTNVULP" In;      // pinName = RSTNVULP;  tf = +TI  ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "SELECT_4_PIN" InOut;      // pinName = SELECT_4_PIN;  tf = +TI  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "STPCFG0" InOut;      // pinName = STPCFG0;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "STPCFG1" InOut;      // pinName = STPCFG1;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TCKC" InOut;      // pinName = TCKC;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TCKC_SENSE" InOut;      // pinName = TCKC_SENSE;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TDI" InOut;      // pinName = TDI;  tf =  SI   CMI  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TDO" InOut;      // pinName = TDO;  tf = ZSE   SO  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TM0" InOut;      // pinName = TM0;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TM1" InOut;      // pinName = TM1;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TM2" InOut;      // pinName = TM2;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TM3" InOut;      // pinName = TM3;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TMSC" InOut;      // pinName = TMSC;  tf = -TI  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "TRSTN" InOut;      // pinName = TRSTN;  tf = +TI  BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "VPP" InOut;      // pinName = VPP;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "WAKEN" In;      // pinName = WAKEN; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "XIN32M" InOut;      // pinName = XIN32M;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "XOUT32M" InOut;      // pinName = XOUT32M;  tf = BIDI ; testOffset = 0.000000;  scanOffset = 0.000000;  
+    "ANT" Out;      // pinName = ANT; 
+    "UWBN" Out;      // pinName = UWBN; 
+    "UWBP" Out;      // pinName = UWBP; 
+  } 
+
+//***************************************************************************//
+//                           DEFINE SIGNAL GROUPS                            //
+//***************************************************************************//
+
+  SignalGroups { 
+
+    "ALLPIs" = '"RSTNVULP"+"WAKEN"'; 
+
+    "ALLPOs" = '"ANT"+"UWBN"+"UWBP"'; 
+
+    "ALLCIOs" = '"ADCIN0"+"ADCIN1"+"ADCIN2"+"ADCIN3"+"ADCIN4"+"AI11RFN"
+                +"AI11RFP"+"ANATEST0"+"ANATEST1"+"P0"+"P1"+"P10"+"P11"+"P12"
+                +"P13"+"P14"+"P15"+"P16"+"P17"+"P18"+"P19"+"P2"+"P20"+"P21"
+                +"P22"+"P23"+"P24"+"P25"+"P26"+"P27"+"P28"+"P29"+"P3"+"P30"
+                +"P31"+"P4"+"P5"+"P6"+"P7"+"P8"+"P9"+"POTCE"+"POTRE"+"POTWE"
+                +"RFTEST0"+"RFTEST1"+"SELECT_4_PIN"+"STPCFG0"+"STPCFG1"
+                +"TCKC"+"TCKC_SENSE"+"TDI"+"TDO"+"TM0"+"TM1"+"TM2"+"TM3"
+                +"TMSC"+"TRSTN"+"VPP"+"XIN32M"+"XOUT32M"'; 
+
+    "CIS_1_TM_2" = '"TDI"' { ScanIn 529; } 
+
+    "CMSR_1_TM_2" = '"TDI"' { ScanIn 65; } 
+
+    "CME_0_TM_2" = '"P7"' { ScanIn 529; } 
+
+    "COS_1_TM_2" = '"TDO"' { ScanOut 529; } 
+
+    "ALLCLKs_TM_2" = '"P10"+"P5"+"P6"'; 
+
+    "ALLECs_TM_2" = '"P10"+"P6"'; 
+
+    "ALLCMLs_CMSR_TM_2" = '"P6"'; 
+
+    "ALLSIs_CIS_TM_2" = '"CIS_1_TM_2"'; 
+
+    "ALLSIs_CMSR_TM_2" = '"CMSR_1_TM_2"'; 
+
+    "ALLSIs_CME_TM_2" = '"CME_0_TM_2"'; 
+
+    "ALLSOs_COS_TM_2" = '"COS_1_TM_2"'; 
+
+  } 
+
+//***************************************************************************//
+//                               DEFINE MACROS                               //
+//***************************************************************************//
+
+  MacroDefs { 
+
+    "TEST" { WaveformTable "test_cycle"; 
+      Vector { 
+        "ALLPOs" = %; 
+        "ALLCIOs" = %; 
+        "ALLPIs" = %; } } 
+
+    "SCAN_CYCLE_TM_2" { WaveformTable "scan_cycle_TM_2"; 
+      Vector { 
+        "ALLPOs" = %; 
+        "ALLCIOs" = %; 
+        "ALLPIs" = %; } } 
+
+    "SCAN_TM_2" { WaveformTable "scan_cycle_TM_2"; 
+      Condition { 
+        "ALLPOs" = XXX; 
+        "ALLSIs_CIS_TM_2" = 0; 
+        "ALLSIs_CME_TM_2" = 0; 
+        "ALLCLKs_TM_2" = 000; 
+        } 
+      Shift { Vector { 
+        "ALLSOs_COS_TM_2" = #; 
+        "ALLSIs_CIS_TM_2" = #; 
+        "ALLSIs_CME_TM_2" = #; 
+        "ALLECs_TM_2" = PP; } } } 
+
+    "SCAN_CMSR_TM_2" { WaveformTable "scan_cycle_TM_2"; 
+      Condition { 
+        "ALLPOs" = XXX; 
+        "ALLSIs_CMSR_TM_2" = 0; 
+        "ALLCLKs_TM_2" = 000; 
+        } 
+      Shift { Vector { 
+        "ALLSIs_CMSR_TM_2" = #; 
+        "ALLCMLs_CMSR_TM_2" = P; } } } 
+} 
