@@ -9,7 +9,8 @@ from typing import Optional
 from lsprotocol import types as lsp
 from pygls.lsp.server import LanguageServer
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(_REPO_ROOT))
 
 from parser.parse import parse
 from parser.lint import lint, Severity, Diagnostic as LintDiagnostic

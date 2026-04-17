@@ -320,8 +320,11 @@
 
 (defcustom stil-lsp-server-command nil
   "Command to start the STIL language server.
-When non-nil, eglot will use this command.  When nil, no LSP
-integration is configured automatically."
+When non-nil, eglot will use this command to start the server.
+When nil, no LSP integration is configured automatically.
+
+Example: (setq stil-lsp-server-command
+             \\='(\"python3\" \"-m\" \"server\" \"/path/to/stil-mode\"))"
   :type '(choice (const nil) (repeat string))
   :group 'stil)
 
@@ -384,10 +387,10 @@ Ignored when `stil-lsp-server-command' is set."
 
 ;; ── LSP integration ─────────────────────────────────────────────
 
-(with-eval-after-load 'eglot
-  (add-to-list 'eglot-server-programs
-               `(stil-mode . ,(or stil-lsp-server-command
-                                  '("python3" "-m" "server.server")))))
+(when stil-lsp-server-command
+  (with-eval-after-load 'eglot
+    (add-to-list 'eglot-server-programs
+                 `(stil-mode . ,stil-lsp-server-command))))
 
 ;; ── Mode startup ────────────────────────────────────────────────
 

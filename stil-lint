@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""Standalone STIL linter CLI."""
+
+from __future__ import annotations
+
+import argparse
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+
+from parser.parse import parse, parse_file
+from parser.lint import lint
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description="STIL linter (IEEE Std 1450-1999)")
+    ap.add_argument("files", nargs="+", help="STIL files to lint")
+    ap.add_argument("-q", "--quiet", action="store_true", help="suppress OK messages")
+    args = ap.parse_args()
+
+    n_errors = 0
+    for path in args.files:
+        result = parse_file(path)
+        if not result.ok:
+            for err in result.errors:
+                print(f"{path}:{err}")
+            n_errors += len(result.errors)
+            continue
+
+        if result.tree is not None:
+            lr = lint(result.tree)
+            for d in lr.diagnostics:
+                print(f"{path}:{d}")
+            n_errors += len(lr.errors)
+
+        if not args.quiet and n_errors == 0:
+            print(f"{path}: OK")
+
+    sys.exit(1 if n_errors else 0)
+
+
+if __name__ == "__main__":
+    main()
