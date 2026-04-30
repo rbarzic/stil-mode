@@ -57,7 +57,7 @@
 
 ;; ── Syntax table (shared) ───────────────────────────────────────
 
-(defvar stil-syntax-table
+(defvar stil-mode-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?/  ". 124" table)
     (modify-syntax-entry ?*  ". 23b" table)
@@ -109,24 +109,64 @@
 
 ;; ── Regex font-lock backend (fallback) ──────────────────────────
 
+(defun stil-fontify-pycall (limit)
+  "Fontify <PyCall>...</PyCall> blocks up to LIMIT.
+Searches past LIMIT for the closing tag to handle multiline blocks.
+Applies `font-lock-preprocessor-face' to the tags and
+`font-lock-doc-face' to the body content."
+  (let (found)
+    (while (and (not found)
+                (re-search-forward "<PyCall>" limit t))
+      (let ((open-beg (match-beginning 0))
+            (open-end (match-end 0)))
+        (if (save-restriction
+              (widen)
+              (re-search-forward "</PyCall>" nil t))
+            (let ((close-beg (match-beginning 0))
+                  (close-end (match-end 0)))
+              (add-text-properties
+               open-beg open-end
+               '(face font-lock-preprocessor-face font-lock-multiline t))
+              (add-text-properties
+               open-end close-beg
+               '(face font-lock-doc-face font-lock-multiline t))
+              (add-text-properties
+               close-beg close-end
+               '(face font-lock-preprocessor-face font-lock-multiline t))
+              (goto-char close-end)
+              (setq found t))
+          (goto-char open-end))))
+    found))
+
 (defvar stil-font-lock-keywords
   `((,(concat "\\<" (regexp-opt stil-top-level-keywords) "\\>")
-     1 font-lock-keyword-face)
+     0 font-lock-keyword-face)
     (,(concat "\\<" (regexp-opt stil-type-keywords) "\\>")
-     1 font-lock-type-face)
+     0 font-lock-type-face)
     (,(concat "\\<" (regexp-opt stil-event-keywords) "\\>")
-     1 font-lock-builtin-face)
+     0 font-lock-builtin-face)
     (,(concat "\\<" (regexp-opt stil-block-keywords) "\\>")
-     1 font-lock-keyword-face)
+     0 font-lock-keyword-face)
     (,(concat "\\<" (regexp-opt stil-pattern-keywords) "\\>")
-     1 font-lock-keyword-face)
+     0 font-lock-keyword-face)
     (,(concat "\\<" (regexp-opt '("V" "W" "C" "F")) "\\>")
-     1 font-lock-keyword-face)
+     0 font-lock-keyword-face)
     ("\\('\\(?:[^']\\|\\\\'\\)*'\\)" 1 font-lock-string-face)
     ("\\(\"[^\"]*\"\\)" 1 font-lock-string-face)
     ("\\(\\b[A-Z_][A-Z0-9_]*:\\)" 1 font-lock-label-face)
     ("\\(\\\\r[0-9]+\\)" 1 font-lock-constant-face)
-    ("\\(\\\\[hdwH DW][A-Za-z0-9]*\\)" 1 font-lock-constant-face))
+    ("\\(\\\\[hdwH DW][A-Za-z0-9]*\\)" 1 font-lock-constant-face)
+    (stil-fontify-pycall
+     (0 font-lock-preprocessor-face keep t))
+    ("\\_<Pattern\\s-+\\([A-Za-z_][A-Za-z0-9_]*\\)\\s-*{"
+     1 font-lock-function-name-face)
+    ("\\_<MacroDefs\\s-+\\([A-Za-z_][A-Za-z0-9_]*\\)\\s-*{"
+     1 font-lock-constant-face)
+    ("\\_<MacroDefs\\s-+[A-Za-z_][A-Za-z0-9_]*\\s-*{" 
+     ("\\s-*{\\s-*\\([A-Za-z_][A-Za-z0-9_]*\\)\\s-*{"
+      nil nil (1 font-lock-function-name-face)))
+    ("\\_<Macro\\s-+\\([A-Za-z_][A-Za-z0-9_]*\\)"
+     1 font-lock-function-name-face))
   "Font-lock keywords for STIL mode (regex backend).")
 
 ;; ── Tree-sitter backend ─────────────────────────────────────────
@@ -397,7 +437,9 @@ Ignored when `stil-lsp-server-command' is set."
 (defun stil--ts-available-p ()
   "Return non-nil if the tree-sitter STIL grammar is available."
   (and (fboundp 'treesit-ready-p)
-       (treesit-ready-p 'stil t)))
+       (condition-case nil
+           (treesit-ready-p 'stil t)
+         (error nil))))
 
 (defun stil-mode-variables ()
   "Set up buffer-local variables for STIL mode."
@@ -424,6 +466,8 @@ for font-lock and navigation.  Otherwise, uses regex-based font-lock.
 \\{stil-mode-map}"
   (stil-mode-variables)
 
+  (setq-local font-lock-defaults '(stil-font-lock-keywords nil nil))
+
   (when (stil--ts-available-p)
     (treesit-parser-create 'stil)
 
@@ -440,13 +484,12 @@ for font-lock and navigation.  Otherwise, uses regex-based font-lock.
     (when (fboundp 'treesit-simple-indent-rules)
       (setq-local treesit-simple-indent-rules (stil-ts-indent-rules)))
 
-    (treesit-font-lock-enable))
-
-  (unless (stil--ts-available-p)
-    (setq-local font-lock-defaults '(stil-font-lock-keywords nil t))))
+    (treesit-font-lock-enable)))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.stil\\'" . stil-mode))
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.pystil\\'" . stil-mode))
 
 (provide 'stil-mode)
 

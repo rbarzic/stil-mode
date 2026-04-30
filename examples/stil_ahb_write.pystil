@@ -1,0 +1,332 @@
+STIL 1.0;
+
+Include "jtag_signals.stil";
+
+Timing {
+   WaveformTable "simpler_ts" {
+      Period '100ns';
+      Waveforms {
+         TCK        { P { '0ns' D; '50ns' U; } }
+         // Semi-ATE parser rejects quoted group expressions ('TMS+TDI') in
+         // Waveforms — expanded to individual signal definitions.
+         TMS        { 0 { '0ns' D; } 1 { '0ns' U; } }
+         TDI        { 0 { '0ns' D; } 1 { '0ns' U; } }
+         all_outputs { X { '0ns' X; } }
+         all_outputs { H { '0ns' X; '50ns' H; } }
+         all_outputs { L { '0ns' X; '50ns' L; } }
+      }
+   }
+}
+
+PatternBurst check_idcode_shift_block_burst {
+   MacroDefs jtag;
+   PatList { check_idcode_shift_block; }
+}
+
+PatternExec check_idcode_shift_block_exec {
+   PatternBurst check_idcode_shift_block_burst;
+}
+
+PatternBurst ahb_write_read_example_burst {
+   MacroDefs jtag;
+   PatList { ahb_write_read_example; }
+}
+
+PatternExec ahb_write_read_example_exec {
+    PatternBurst ahb_write_read_example_burst;
+ }
+
+MacroDefs jtag  {
+   tap_reset {
+      Loop 5 { V { TCK=P; TMS=1; TDI=0; TDO=X; } }
+   }
+   reset2idle {
+      V { TCK=P; TMS=0; TDI=0; TDO=X; }
+   }
+   load_ir {  // Idle-> Exit1-IR
+      // Navigate to ShiftIR: Idle->SelDR(1)->SelIR(1)->CaptIR(0)->ShiftIR(0)
+      V { TCK=P; TMS=1; TDI=0; TDO=X; }
+      V { TCK=P; TMS=1; TDI=0; TDO=X; }
+      V { TCK=P; TMS=0; TDI=0; TDO=X; }
+      V { TCK=P; TMS=0; TDI=0; TDO=X; }
+      // Shift IR bits (# from caller's TDI data); last bit exits to Exit1-IR
+      Shift { V { TCK=P; TMS=0; TDI=#; TDO=X; } }
+      V { TCK=P; TMS=1; TDI=#; TDO=X; }
+  }
+  load_ir_idcode {
+    // IR=0x01, binary=00001, reversed=10000
+    Macro load_ir { TDI=10000; }
+  }
+  load_ir_bypass {
+    // IR=0x00, binary=00000, reversed=00000
+    Macro load_ir { TDI=00000; }
+  }
+  load_ir_testmodectrl {
+    // IR=0x02, binary=00010, reversed=01000
+    Macro load_ir { TDI=01000; }
+  }
+  load_ir_dtmcs {
+    // IR=0x10, binary=10000, reversed=00001
+    Macro load_ir { TDI=00001; }
+  }
+  load_ir_dmi {
+    // IR=0x11, binary=10001, reversed=10001
+    Macro load_ir { TDI=10001; }
+  }
+  load_ir_dtmcs_ahb {
+    // IR=0x12, binary=10010, reversed=01001
+    Macro load_ir { TDI=01001; }
+  }
+  load_ir_dmi_ahb {
+    // IR=0x13, binary=10011, reversed=11001
+    Macro load_ir { TDI=11001; }
+  }
+  load_ir_extrawrite {
+    // IR=0x14, binary=10100, reversed=00101
+    Macro load_ir { TDI=00101; }
+  }
+  load_ir_extraread {
+    // IR=0x15, binary=10101, reversed=10101
+    Macro load_ir { TDI=10101; }
+  }
+  load_ir_mboxin {
+    // IR=0x16, binary=10110, reversed=01101
+    Macro load_ir { TDI=01101; }
+  }
+  load_ir_mboxout {
+    // IR=0x17, binary=10111, reversed=11101
+    Macro load_ir { TDI=11101; }
+  }
+  load_ir_mboxstatus {
+    // IR=0x18, binary=11000, reversed=00011
+    Macro load_ir { TDI=00011; }
+  }
+  load_ir_bypass2 {
+    // IR=0x1F, binary=11111, reversed=11111
+    Macro load_ir { TDI=11111; }
+  }
+  load_ir_dmi_ahb_to_shift_dr {
+    // Combines load_ir_dmi_ahb + exit1_ir2shift_dr using explicit V statements
+    // (no nested Shift block) so this macro is safe to call from Procedures
+    // that have their own Shift block.  See STIL_Technical_FAQ.md §10.
+    // RTI → ShiftIR (DMI_AHB IR=0x13, LSB-first "11001")
+    V { TCK=P; TMS=1; TDI=0; TDO=X; }   // RTI → SelDR
+    V { TCK=P; TMS=1; TDI=0; TDO=X; }   // SelDR → SelIR
+    V { TCK=P; TMS=0; TDI=0; TDO=X; }   // SelIR → CaptIR
+    V { TCK=P; TMS=0; TDI=0; TDO=X; }   // CaptIR → ShiftIR
+    V { TCK=P; TMS=0; TDI=1; TDO=X; }   // IR[0]=1
+    V { TCK=P; TMS=0; TDI=1; TDO=X; }   // IR[1]=1
+    V { TCK=P; TMS=0; TDI=0; TDO=X; }   // IR[2]=0
+    V { TCK=P; TMS=0; TDI=0; TDO=X; }   // IR[3]=0
+    V { TCK=P; TMS=1; TDI=1; TDO=X; }   // IR[4]=1 → Exit1-IR
+    // Exit1-IR → ShiftDR
+    V { TCK=P; TMS=1; TDI=0; TDO=X; }   // Update-IR
+    V { TCK=P; TMS=1; TDI=0; TDO=X; }   // SelDR
+    V { TCK=P; TMS=0; TDI=0; TDO=X; }   // CaptDR
+    V { TCK=P; TMS=0; TDI=0; TDO=X; }   // ShiftDR
+  }
+  exit1_ir2shift_dr {
+    V { TCK=P; TMS=1; TDI=0; TDO=X; } // Update-IR
+    V { TCK=P; TMS=1; TDI=0; TDO=X; } // Sel-DR
+    V { TCK=P; TMS=0; TDI=0; TDO=X; } // Capt-DR
+    V { TCK=P; TMS=0; TDI=0; TDO=X; } // Shift-DR
+  }
+  idle_wait {
+    // DTMCS_IDLE=7 (jtagif_dmi_params.v): spec minimum; 10 cycles for margin
+    Loop 10 { V { TCK=P; TMS=0; TDI=0; TDO=X; } }
+  }
+}
+
+
+
+
+
+// Procedures must come after PatternBurst/PatternExec so that
+// STILDumpCompiler resolves signal-group domains before parsing '#' WFCs.
+Procedures {
+   "jtag_check_idcode" {
+      W "simpler_ts";
+      C { TDO=X; }
+      // 1. Reset TAP Controller
+      Macro tap_reset;
+      Macro reset2idle;
+      Macro load_ir { TDI=10000; }      
+      // Macro load_ir_idcode;
+      // 2. Shift-IR: Load 5-bit IDCODE instruction (00001 LSB-first: bit0=H bits1-4=L)
+    
+    // // Path: Idle -> SelDR(1) -> SelIR(1) -> CaptIR(0) -> ShiftIR(0)
+    // V { TCK=P; TMS=1; TDI=0; TDO=X; }
+    // V { TCK=P; TMS=1; TDI=0; TDO=X; }
+    // V { TCK=P; TMS=0; TDI=0; TDO=X; }
+    // V { TCK=P; TMS=0; TDI=0; TDO=X; }
+    // V { TCK=P; TMS=0; TDI=1; TDO=X; } // IR Bit 0 (1)
+    // Loop 3 { V { TCK=P; TMS=0; TDI=0; TDO=X; } } // IR Bits 1-3 (0)
+    // V { TCK=P; TMS=1; TDI=0; TDO=X; } // IR Bit 4 (0) -> Exit1-IR
+
+    // 3. Move to Shift-DR
+    //RB  V { TCK=P; TMS=1; TDI=0; TDO=X; } // Update-IR
+    //RB  V { TCK=P; TMS=1; TDI=0; TDO=X; } // Sel-DR
+    //RB  V { TCK=P; TMS=0; TDI=0; TDO=X; } // Capt-DR
+    //RB  V { TCK=P; TMS=0; TDI=0; TDO=X; } // Shift-DR
+    Macro exit1_ir2shift_dr;     
+
+    // 4. Shift IDCODE bits using the STIL Shift block (IEEE 1450 sec. 24).
+    //    The Shift block repeats its single Vector once per data bit supplied
+    //    by the caller via '#'.  With a post-shift V { TDO=#; } below, the
+    //    compiler assigns (total_data - 1) cycles to the Shift block and the
+    //    final bit to the post-shift V, keeping the TMS=1 exit on the last
+    //    real shift cycle (correct IEEE 1149.1 behaviour).
+    
+      Shift { V { TCK=P; TMS=0; TDI=0; TDO=#; } }
+
+      // 5. Final bit: consumed from Call data by '#'; TMS=1 exits to Exit1-DR.
+      V { TCK=P; TMS=1; TDI=0; TDO=#; } // bit 31 + exit Shift-DR
+
+      // 6. Back to Idle
+      V { TCK=P; TMS=1; TDI=0; TDO=X; } // Update-DR
+      V { TCK=P; TMS=0; TDI=0; TDO=X; } // Run-Test/Idle
+   }
+
+   // -----------------------------------------------------------------------
+   // dmi_ahb_write
+   //   Initiates an AHB write through DMI_AHB (IR=0x13).
+   //   Assumes TAP in Run-Test/Idle; returns to Run-Test/Idle.
+   //
+   //   Bit ordering: STIL TDI strings are LSB-first (leftmost char = bit[0]).
+   //   Caller provides 54-bit TDI, three fields concatenated in shift order:
+   //     [1:0]   op    = "01"  (WRITE=2'b10: bit0=0 first, bit1=1 second)
+   //     [33:2]  data  = write data, bit[0] first
+   //     [53:34] addr  = word-aligned AHB address (20b), bit[0] first
+   //   TDO is not checked (previous op result discarded).
+   //
+   //   Example — write 0x00000001 to word-address 0x00001:
+   //     data=0x00000001 LSB-first: "10000000000000000000000000000000"
+   //     addr=0x00001    LSB-first: "10000000000000000000"
+   //     Call "dmi_ahb_write" {
+   //       TDI=01 10000000000000000000000000000000 10000000000000000000;
+   //     }
+   // -----------------------------------------------------------------------
+   "dmi_ahb_write" {
+      W "simpler_ts";
+      Macro load_ir_dmi_ahb_to_shift_dr;   // IR=0x13, navigate to ShiftDR (no nested Shift)
+      Shift { V { TCK=P; TMS=0; TDI=#; TDO=X; } }
+      V { TCK=P; TMS=1; TDI=#; TDO=X; }   // last shift bit -> Exit1-DR
+      V { TCK=P; TMS=1; TDI=0; TDO=X; }   // Update-DR
+      Macro idle_wait;
+   }
+
+   // -----------------------------------------------------------------------
+   // dmi_ahb_read
+   //   Initiates an AHB read through DMI_AHB (IR=0x13).
+   //   Assumes TAP in Run-Test/Idle; returns to Run-Test/Idle.
+   //   The read result is NOT returned here — follow with dmi_ahb_nop.
+   //
+   //   Caller provides 54-bit TDI:
+   //     [1:0]   op    = "10"  (READ=2'b01: bit0=1 first, bit1=0 second)
+   //     [33:2]  data  = 32'b0 (unused for read; provide all-zero bits)
+   //     [53:34] addr  = word-aligned AHB address (20b), bit[0] first
+   //
+   //   Procedure body is identical to dmi_ahb_write; named separately for
+   //   call-site clarity.
+   //
+   //   Example — initiate read from word-address 0x00001:
+   //     addr=0x00001 LSB-first: "10000000000000000000"
+   //     Call "dmi_ahb_read" {
+   //       TDI=10 00000000000000000000000000000000 10000000000000000000;
+   //     }
+   // -----------------------------------------------------------------------
+   "dmi_ahb_read" {
+      W "simpler_ts";
+      Macro load_ir_dmi_ahb_to_shift_dr;   // IR=0x13, navigate to ShiftDR (no nested Shift)
+      Shift { V { TCK=P; TMS=0; TDI=#; TDO=X; } }
+      V { TCK=P; TMS=1; TDI=#; TDO=X; }
+      V { TCK=P; TMS=1; TDI=0; TDO=X; }
+      Macro idle_wait;
+   }
+
+   // -----------------------------------------------------------------------
+   // dmi_ahb_nop
+   //   Sends a NOP and captures the result of the previous DMI operation.
+   //   Must be called after dmi_ahb_read (or dmi_ahb_write for status check).
+   //   Assumes TAP in Run-Test/Idle; returns to Run-Test/Idle.
+   //
+   //   TDI is fixed to all-zeros: op=NOP=2'b00, data=0, addr=0.
+   //
+   //   Caller provides 54-bit TDO expected value (LSB-first each field):
+   //     [1:0]   op_status = "00" means previous op succeeded (DMI_OP_STATUS_OK)
+   //     [33:2]  data      = read data, bit[0] first (use X if not checking)
+   //     [53:34] addr      = returned address field (typically X)
+   //   Use X for any bits not under test.
+   //
+   //   Example — collect result, check status OK and data=0x00000001:
+   //     data=0x00000001 LSB-first: "10000000000000000000000000000000"
+   //     Call "dmi_ahb_nop" {
+   //       TDO=00 10000000000000000000000000000000 XXXXXXXXXXXXXXXXXXXX;
+   //     }
+   //   Example — collect result, check status OK only (data don't-care):
+   //     Call "dmi_ahb_nop" {
+   //       TDO=00 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXXXXXX;
+   //     }
+   // -----------------------------------------------------------------------
+   "dmi_ahb_nop" {
+      W "simpler_ts";
+      Macro load_ir_dmi_ahb_to_shift_dr;   // IR=0x13, navigate to ShiftDR (no nested Shift)
+      Shift { V { TCK=P; TMS=0; TDI=0; TDO=#; } }
+      V { TCK=P; TMS=1; TDI=0; TDO=#; }   // last shift bit -> Exit1-DR
+      V { TCK=P; TMS=1; TDI=0; TDO=X; }   // Update-DR
+      Macro idle_wait;
+   }
+}
+
+Pattern check_idcode_shift_block {
+   W "simpler_ts";
+   // STILDumpCompiler requires at least one vector before a Call statement.
+   V { TCK=P; TMS=1; TDI=0; TDO=X; }
+   // Expected IDCODE: 0x64F30D7B = 0xDEB0CF26 bit-reversed (LSB first)
+   Call "jtag_check_idcode" { TDO=Hex DEB0CF26; }
+}
+
+// ---------------------------------------------------------------------------
+// ahb_write_read_example
+//   Demonstrates the DMI_AHB write + read-back sequence.
+//   All TDI/TDO values are LSB-first (bit[0] = leftmost character).
+//
+//   Sequence:
+//     1. Write 0x00000001 to AHB word-address 0x00001
+//     2. Initiate read from AHB word-address 0x00001
+//     3. NOP to collect result; check status=OK and data=0x00000001
+//
+//   TDI field encoding used below:
+//     op=WRITE : "01"  (2'b10 LSB-first: bit0=0, bit1=1)
+//     op=READ  : "10"  (2'b01 LSB-first: bit0=1, bit1=0)
+//     data=0x00000001  LSB-first: "10000000000000000000000000000000"
+//     addr=0x00001     LSB-first: "10000000000000000000"
+// ---------------------------------------------------------------------------
+Pattern ahb_write_read_example {
+   W "simpler_ts";
+   // STILDumpCompiler requires at least one vector before a Call statement.
+   V { TCK=P; TMS=1; TDI=0; TDO=X; }
+
+   // Reset TAP and enter Idle
+   Macro tap_reset;
+   Macro reset2idle;
+
+   // Step 1: write 0xCAFEBABE to word-address 0x20000
+   <PyCall>  dmi_ahb_write(addr=0x20000, data=0xCAFEBABE) </PyCall>
+
+   // Step 2: initiate read from word-address 0x20000
+   <PyCall> dmi_ahb_read(addr=0x20000) </PyCall>
+
+   // Step 3: NOP to collect read result
+   //   op_status="00" (OK), data=0xCAFEBABE LSB-first, addr=don't-care
+  <PyCall>
+     dmi_ahb_nop(
+        expected_addr=0,
+        mapping_addr=("X", "X"),
+        expected_data=0xCAFEBABE,
+        mapping_data=("L", "H"),
+        expected_op=DMI_OP_OK,
+        mapping_op=("L", "H"))    
+    
+  </PyCall>
+}
